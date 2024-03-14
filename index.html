@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any" />
+
+    <script
+      src="https://kit.fontawesome.com/6f654f2ea2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      async
+      src="https://ga.jspm.io/npm:es-module-shims@1.8.3/dist/es-module-shims.js"
+    ></script>
+    <script type="importmap-shim">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+          "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-three.prod.js"
+        }
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR</title>
+  </head>
+  <body>
+    <body>
+      <!-- MOUSE FOLLOW -->
+      <!-- <div id="mouseIcon" class="mouse-icon"> -->
+      <!--  -->
+      <!-- </div> -->
+      <!-- END MOUSE FOLLOW -->
+      <canvas id="canvas"></canvas>
+      <div class="content">
+        <section id="section" class="ar-container">
+          <div class="modal">
+            <div class="ui-screen ui-screen__loading" id="screenLoading">
+              <div class="assets-loader"></div>
+            </div>
+            <div class="ui-screen ui-screen__scanning" id="screenScanning">
+              <div class="scanning">
+                <div class="scan-wrapper">
+                  <img class="img-scan" src="/max_logo.png" />
+                  <div class="inner">
+                    <div class="scaneline"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p id="stopARBtn" class="go-back">
+              <i
+                style="pointer-events: none"
+                class="fa-solid fa-chevron-left"
+              ></i>
+            </p>
+
+            <div class="ar-session-wrapper"></div>
+          </div>
+          <div class="ar-content-desc">
+            <h2 class="ar-content-desc__title">
+              Scan the image and <br />
+              explore our <span class="special-text">menu</span>
+            </h2>
+            <div class="ar-content-desc__call-to-action">
+              <img class="img-qr" src="/max_logo.png" />
+              <button id="arButton" class="start-ar-experience">
+                Start <i class="fa-brands fa-unity"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!--  LOADING SCREEN -->
+        <div id="loaderScreen" class="loader-screen">
+          <h2 id="loadingProgress" class="loading-progress">0</h2>
+          <button id="btnLoader" class="btn-loader">
+            <i class="fa-solid fa-pizza-slice"></i>
+            Enter
+          </button>
+        </div>
+      </div>
+    </body>
+    <script type="module-shim" src="/src/main.ts"></script>
+  </body>
+</html>
