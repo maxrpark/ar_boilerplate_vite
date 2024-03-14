@@ -1,11 +1,11 @@
 import * as THREE from "three";
 //@ts-ignore
-import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader";
 
 //@ts-ignore
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader";
 //@ts-ignore
-import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader";
 
 export enum Loader {
   RGBE_LOADER = "rgbeLoader",

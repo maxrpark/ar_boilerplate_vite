@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import AnchorObject from "./AnchorObject.js";
+import AnchorObject from "./AnchorObject";
 import { AnchorInt } from "mindar-image-three";
 import vertexShader from "../shaders/cubeShader/vertexShader.glsl";
 import fragmentShader from "../shaders/cubeShader/fragmentShader.glsl";

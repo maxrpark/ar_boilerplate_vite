@@ -1,9 +1,9 @@
 import * as THREE from "three";
 
-import EventEmitter from "./EventEmitter.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import EventEmitter from "./EventEmitter";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
 export interface modelData {
   id: number;

@@ -1,8 +1,8 @@
 import * as THREE from "three";
 
-import { Experience } from "./experience/Experience.js";
-import LoaderShader from "./objects/LoaderPlane.js";
-import Debug from "./utils/Debug.js";
+import { Experience } from "./experience/Experience";
+import LoaderShader from "./objects/LoaderPlane";
+import Debug from "./utils/Debug";
 
 export default class ThreeExperience {
   experience: Experience;

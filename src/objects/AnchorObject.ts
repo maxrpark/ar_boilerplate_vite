@@ -1,6 +1,6 @@
 import { AnchorInt } from "mindar-image-three";
 import * as THREE from "three";
-import { Experience } from "../experience/Experience.js";
+import { Experience } from "../experience/Experience";
 
 interface Props {
   anchor: AnchorInt;

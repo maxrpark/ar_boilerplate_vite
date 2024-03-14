@@ -1,11 +1,11 @@
-import sources from "../sources/sources.js";
-import Resources from "./Resources.js";
+import sources from "../sources/sources";
+import Resources from "./Resources";
 
-import { mockWithImage } from "../utils/helperFunctions.js";
-import { ARExperience } from "../ARExperience.js";
-import ThreeExperience from "../ThreeExperience.js";
-import Debug from "../utils/Debug.js";
-import { Time } from "./Time.js";
+import { mockWithImage } from "../utils/helperFunctions";
+import { ARExperience } from "../ARExperience";
+import ThreeExperience from "../ThreeExperience";
+import Debug from "../utils/Debug";
+import { Time } from "./Time";
 const USING_TEST_IMG = false;
 
 declare global {

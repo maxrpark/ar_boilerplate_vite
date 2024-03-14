@@ -1,10 +1,10 @@
-import { Experience } from "../experience/Experience.js";
+import { Experience } from "../experience/Experience";
 import * as THREE from "three";
 import GUI from "lil-gui";
-import Debug from "../utils/Debug.js";
+import Debug from "../utils/Debug";
 //@ts-ignore
 import { gsap } from "gsap";
-import EventEmitter from "../experience/EventEmitter.js";
+import EventEmitter from "../experience/EventEmitter";
 
 export default class LoaderShader extends EventEmitter {
   experience: Experience;
