@@ -1,11 +1,11 @@
 import sources from "../sources/sources";
-import Resources from "./Resources";
 
 import { mockWithImage } from "../utils/helperFunctions";
 import { ARExperience } from "../ARExperience";
 import ThreeExperience from "../ThreeExperience";
 import Debug from "../utils/Debug";
 import { Time } from "./Time";
+import Resources from "./Resources";
 const USING_TEST_IMG = false;
 
 declare global {
