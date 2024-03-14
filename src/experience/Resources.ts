@@ -110,17 +110,14 @@ export default class Resources extends EventEmitter {
   }
 
   setRecourses(source: SourceInt, file: LoaderType) {
-    let id = 0;
-
     let item = {
-      id: 0,
+      id: this.glbModels.length,
       name: source.name,
       //@ts-ignore
       model: file,
       //@ts-ignore
       arModel: file.scene!.clone(),
     };
-    id++;
     //@ts-ignore
 
     this.glbModels.push(item);
