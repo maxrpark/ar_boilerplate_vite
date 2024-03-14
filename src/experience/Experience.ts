@@ -6,7 +6,7 @@ import { ARExperience } from "../ARExperience.js";
 import ThreeExperience from "../ThreeExperience.js";
 import Debug from "../utils/Debug.js";
 import { Time } from "./Time.js";
-const USING_TEST_IMG = true;
+const USING_TEST_IMG = false;
 
 declare global {
   interface Window {
