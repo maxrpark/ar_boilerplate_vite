@@ -1,13 +1,16 @@
 import * as THREE from "three";
 
 import EventEmitter from "./EventEmitter";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
-//@ts-ignore
-import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader.js";
-//@ts-ignore
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-//@ts-ignore
-import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+// //@ts-ignore
+// import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader.js";
+// //@ts-ignore
+// import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+// //@ts-ignore
+// import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 export interface modelData {
   id: number;
