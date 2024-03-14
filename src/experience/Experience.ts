@@ -1,5 +1,4 @@
 import sources from "../sources/sources";
-
 import { mockWithImage } from "../utils/helperFunctions";
 import { ARExperience } from "../ARExperience";
 import ThreeExperience from "../ThreeExperience";
@@ -54,7 +53,6 @@ export class Experience implements ExperienceInt {
     instance = this;
 
     window.experience = this;
-    //@ts-ignore
     this.threeExperience = new ThreeExperience();
     this.resources = new Resources(sources);
     this.arExperienceOn = false;

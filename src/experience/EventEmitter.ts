@@ -120,7 +120,6 @@ export default class EventEmitter {
     let nameArray = this.resolveNames(_name);
 
     // Resolve name
-    //@ts-ignore
     let name = this.resolveName(nameArray[0]);
 
     // Default namespace

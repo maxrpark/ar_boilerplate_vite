@@ -1,21 +1,18 @@
 import * as THREE from "three";
 
-console.log(THREE);
-
 import EventEmitter from "./EventEmitter";
-//@ts-ignore
 
-//@ts-ignore
-import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader.js";
-//@ts-ignore
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-//@ts-ignore
-import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+// import { GLTFLoader, GLTF } from "three/addons/loaders/GLTFLoader.js";
+// import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+// import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 export interface modelData {
   id: number;
   name: string;
-  //@ts-ignore
   model: GLTF;
   arModel: THREE.Group;
 }
@@ -98,7 +95,6 @@ export default class Resources extends EventEmitter {
   loadSource(source: SourceInt, file: LoaderType) {
     if (source.type !== Loader.GLTF_LOADER) {
       //@ts-ignore
-
       this.items[source.name] = file;
     } else {
       this.setRecourses(source, file);
@@ -117,7 +113,6 @@ export default class Resources extends EventEmitter {
     let item = {
       id: this.glbModels.length,
       name: source.name,
-      //@ts-ignore
       model: file,
       //@ts-ignore
       arModel: file.scene!.clone(),

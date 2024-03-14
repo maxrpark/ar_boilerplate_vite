@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { Experience } from "./experience/Experience";
 import Resources from "./experience/Resources";
 import BoxObject from "./objects/BoxObject";
-//@ts-ignore
 import { MindARThree } from "mindar-image-three";
 
 export class ARExperience {
