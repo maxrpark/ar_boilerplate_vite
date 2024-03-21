@@ -3,9 +3,9 @@ import * as THREE from "three";
 import { Experience } from "./experience/Experience";
 import Resources from "./experience/Resources";
 import BoxObject from "./objects/BoxObject";
-import { MindARThree } from "mindar-image-three";
+import { MindARThree } from "mindar-face-three";
 
-export class ARExperience {
+export class ARFaceTrackingExperience {
   mindarThree: any;
   experience: Experience;
   resources: Resources;
@@ -26,11 +26,6 @@ export class ARExperience {
   async setARExperience() {
     this.mindarThree = await new MindARThree({
       container: document.querySelector(".ar-session-wrapper")!,
-      imageTargetSrc: "/targets/target.mind",
-      filterMinCF: 0.0001,
-      filterBeta: 0.001,
-      uiLoading: "#screenLoading",
-      uiScanning: "#screenScanning",
     });
 
     const { renderer, scene, camera } = this.mindarThree;
@@ -52,8 +47,10 @@ export class ARExperience {
     this.setRecourses();
   }
   setModels() {
+    console.log("max");
+
     // Only for testing
-    this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(0) });
+    this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(6) });
   }
 
   setRecourses() {

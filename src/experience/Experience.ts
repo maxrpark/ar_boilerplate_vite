@@ -1,10 +1,11 @@
 import sources from "../sources/sources";
 import { mockWithImage } from "../utils/helperFunctions";
-import { ARExperience } from "../ARExperience";
+import { ARImageExperience } from "../ARImageExperience";
 import ThreeExperience from "../ThreeExperience";
 import Debug from "../utils/Debug";
 import { Time } from "./Time";
 import Resources from "./Resources";
+import { ARFaceTrackingExperience } from "../ARFaceTrackingExperience";
 const USING_TEST_IMG = false;
 
 declare global {
@@ -21,7 +22,8 @@ let instance: Experience | null = null;
 
 export class Experience implements ExperienceInt {
   resources: Resources;
-  arExperience: ARExperience;
+  arExperience: ARImageExperience; // Image
+  // arExperience: ARFaceTrackingExperience; //
   threeExperience: ThreeExperience;
   arExperienceOn: boolean;
   isMobile: boolean;
@@ -62,7 +64,8 @@ export class Experience implements ExperienceInt {
     });
 
     this.resources.on("loaded", () => {
-      this.arExperience = new ARExperience();
+      // this.arExperience = new ARFaceTrackingExperience();
+      this.arExperience = new ARImageExperience();
       this.threeExperience.onResourcesLoaded();
       this.createEvents();
     });
@@ -85,7 +88,7 @@ export class Experience implements ExperienceInt {
       this.arExperienceOn = true;
       modal.classList.add("show");
       if (USING_TEST_IMG) {
-        mockWithImage("/example_image_1.jpg");
+        mockWithImage("/example_image_2.jpg");
       }
       this.arExperience.startArExperience();
     });

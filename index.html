@@ -9,7 +9,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="importmap">
+    <!-- <script type="importmap">
       {
         "imports": {
           "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
@@ -17,7 +17,17 @@
           "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-three.prod.js"
         }
       }
-    </script>
+    </script> -->
+
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+          "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-face-three.prod.js"
+        }
+      }
+    </script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AR-Cube || Maxi Ruti</title>
   </head>
@@ -27,20 +37,6 @@
       <div class="content">
         <section id="section" class="ar-container">
           <div class="modal">
-            <div class="ui-screen ui-screen__loading" id="screenLoading">
-              <div class="assets-loader"></div>
-            </div>
-            <div class="ui-screen ui-screen__scanning" id="screenScanning">
-              <div class="scanning">
-                <div class="scan-wrapper">
-                  <img class="img-scan" src="/max_logo.png" />
-                  <div class="inner">
-                    <div class="scaneline"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <p id="stopARBtn" class="go-back">
               <i
                 style="pointer-events: none"

@@ -1,28 +1,31 @@
-// declare module "mindar-face-three" {
-//   import * as THREE from "three";
+declare module "mindar-face-three" {
+  import * as THREE from "three";
 
-//   interface MaterialWithTexture extends THREE.Material {
-//     map: THREE.Texture;
-//   }
+  export interface AnchorInt {
+    group: THREE.Group;
+    targetIndex: number;
+    visible: boolean;
+    onTargetFound: () => void;
+    onTargetLost: () => void;
+  }
 
-//   export class MindARThree {
-//     constructor(options: { container: HTMLElement });
+  interface MaterialWithTexture extends THREE.Material {
+    map: THREE.Texture;
+  }
 
-//     renderer: THREE.WebGLRenderer;
-//     scene: THREE.Scene;
-//     camera: THREE.PerspectiveCamera;
-//     addFaceMesh: () => THREE.Mesh<THREE.BufferGeometry, MaterialWithTexture>;
-//     addAnchor(index: number): {
-//       group: THREE.Group;
-//       onTargetFound: () => void;
-//       onTargetLost: () => void;
-//     };
-//     start(): Promise<void>;
+  export class MindARThree {
+    constructor(options: { container: HTMLElement });
 
-//     // Add other methods and properties as needed
-//   }
+    renderer: THREE.WebGLRenderer;
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    addFaceMesh: () => THREE.Mesh<THREE.BufferGeometry, MaterialWithTexture>;
+    addAnchor(index: number): AnchorInt;
+    addAnchor(index: number): AnchorInt;
+    start(): Promise<void>;
+    stop(): Promise<void>;
+    anchors: AnchorInt[];
+  }
 
-//   export default MindARThree;
-// }
-
-export {};
+  export default MindARThree;
+}
