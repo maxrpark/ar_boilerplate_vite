@@ -23,8 +23,8 @@ export class ARFaceTrackingExperience {
     this.setARExperience();
   }
 
-  async setARExperience() {
-    this.mindarThree = await new MindARThree({
+  setARExperience() {
+    this.mindarThree = new MindARThree({
       container: document.querySelector(".ar-session-wrapper")!,
     });
 
@@ -40,15 +40,13 @@ export class ARFaceTrackingExperience {
     this.renderer.toneMappingExposure = 1;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-    setTimeout(() => {
-      this.setModels();
-    }, 1000);
+  }
+  onResourcesLoaded() {
+    this.setModels();
     this.setRecourses();
   }
-  setModels() {
-    console.log("max");
 
+  setModels() {
     // Only for testing
     this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(6) });
   }

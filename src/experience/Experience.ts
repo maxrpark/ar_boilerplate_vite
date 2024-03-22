@@ -6,6 +6,7 @@ import Debug from "../utils/Debug";
 import { Time } from "./Time";
 import Resources from "./Resources";
 import { ARFaceTrackingExperience } from "../ARFaceTrackingExperience";
+import LoaderShader from "../objects/LoaderPlane";
 const USING_TEST_IMG = false;
 
 declare global {
@@ -22,14 +23,14 @@ let instance: Experience | null = null;
 
 export class Experience implements ExperienceInt {
   resources: Resources;
-  arExperience: ARImageExperience; // Image
-  // arExperience: ARFaceTrackingExperience; //
+  arExperience: ARFaceTrackingExperience | ARImageExperience;
   threeExperience: ThreeExperience;
   arExperienceOn: boolean;
   isMobile: boolean;
   debug: Debug;
   time: Time;
 
+  shaderLoader: LoaderShader;
   sizes: {
     width: number;
     height: number;
@@ -55,28 +56,38 @@ export class Experience implements ExperienceInt {
     instance = this;
 
     window.experience = this;
-    this.threeExperience = new ThreeExperience();
-    this.resources = new Resources(sources);
     this.arExperienceOn = false;
 
-    this.resources.on("itemLoaded", () => {
-      this.threeExperience.shaderLoader.updateProgress();
-    });
+    this.resources = new Resources(sources);
 
-    this.resources.on("loaded", () => {
-      // this.arExperience = new ARFaceTrackingExperience();
-      this.arExperience = new ARImageExperience();
-      this.threeExperience.onResourcesLoaded();
-      this.createEvents();
-    });
+    this.createExperiences();
+
+    this.resources.on("loaded", () => this.setResources());
 
     window.addEventListener("resize", () => {
       this.sizes.width = window.innerWidth;
       this.sizes.height = window.innerHeight;
       (this.sizes.pixelRatio = Math.min(window.devicePixelRatio, 2)),
         (this.isMobile = this.sizes.width < 870 ? true : false);
-      if (this.arExperience) this.threeExperience.onResize();
+      // if (this.arExperience) this.threeExperience.onResize();
     });
+  }
+  createExperiences() {
+    // this.threeExperience = new ThreeExperience();
+    // this.arExperience = new ARFaceTrackingExperience();
+    this.arExperience = new ARImageExperience();
+    this.setShaderLoader();
+  }
+  setResources() {
+    // this.threeExperience.onResourcesLoaded();
+    this.arExperience.onResourcesLoaded();
+    this.createEvents();
+  }
+
+  setShaderLoader() {
+    this.shaderLoader = new LoaderShader();
+    this.shaderLoader.mesh.position.z = 0.01;
+    this.arExperience.scene.add(this.shaderLoader.mesh);
   }
 
   createEvents() {

@@ -1,7 +1,6 @@
 import * as THREE from "three";
 
 import { Experience } from "./experience/Experience";
-import LoaderShader from "./objects/LoaderPlane";
 import Debug from "./utils/Debug";
 
 export default class ThreeExperience {
@@ -15,7 +14,7 @@ export default class ThreeExperience {
   delta: number;
   elapse: number;
   isMobile: boolean;
-  shaderLoader: LoaderShader;
+  // shaderLoader: LoaderShader;
   debug: Debug;
 
   constructor() {
@@ -49,7 +48,7 @@ export default class ThreeExperience {
     );
     this.camera.position.set(0, 0, 5);
     this.scene.add(this.camera);
-    this.setShaderLoader();
+    // this.setShaderLoader();
   }
 
   createRenderer() {
@@ -68,11 +67,11 @@ export default class ThreeExperience {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   }
 
-  setShaderLoader() {
-    this.shaderLoader = new LoaderShader();
-    this.shaderLoader.mesh.position.z = 0.01;
-    this.scene.add(this.shaderLoader.mesh);
-  }
+  // setShaderLoader() {
+  //   this.shaderLoader = new LoaderShader();
+  //   this.shaderLoader.mesh.position.z = 0.01;
+  //   this.scene.add(this.shaderLoader.mesh);
+  // }
 
   setModels() {}
 
@@ -127,5 +126,29 @@ export default class ThreeExperience {
     this.renderer.render(this.scene, this.camera);
 
     window.requestAnimationFrame(() => this.tick());
+  }
+
+  destroy() {
+    this.scene.traverse((child) => {
+      // Test if it's a mesh
+      if (child instanceof THREE.Mesh) {
+        child.geometry.dispose();
+
+        // Loop through the material properties
+        for (const key in child.material) {
+          const value = child.material[key];
+
+          // Test if there is a dispose function
+          if (value && typeof value.dispose === "function") {
+            value.dispose();
+          }
+        }
+      }
+    });
+
+    // this.camera.controls.dispose();
+    this.renderer.dispose();
+
+    if (this.debug.active) this.debug.ui.destroy();
   }
 }

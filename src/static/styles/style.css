@@ -35,6 +35,9 @@ html {
   height: 100vh;
   overflow: hidden;
 }
+body {
+  background: var(--tomato);
+}
 
 .img {
   width: 100%;

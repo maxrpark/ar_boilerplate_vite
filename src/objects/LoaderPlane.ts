@@ -26,6 +26,10 @@ export default class LoaderShader extends EventEmitter {
     this.debug = this.experience.debug;
     this.createMesh();
 
+    this.experience.resources.on("itemLoaded", () => {
+      this.updateProgress();
+    });
+
     this.loadingScreen = document.querySelector("#loaderScreen")!;
     // this.btnLoader = document.querySelector("#btnLoader")!;
     this.progressText = document.querySelector("#loadingProgress")!;
@@ -55,6 +59,7 @@ export default class LoaderShader extends EventEmitter {
     this.progressText.innerHTML = `${progress.toFixed()}%`;
 
     if (progress === 100) {
+      // return;
       // this.onAllLoaded()
 
       gsap
@@ -63,17 +68,13 @@ export default class LoaderShader extends EventEmitter {
           display: "none",
         })
         .to(this.material.uniforms.uProgress, {
-          value: 0,
+          value: 1,
           duration: 1,
           ease: "none",
         })
-        .set(
-          "#canvas",
-          {
-            zIndex: -1,
-          },
-          0
-        );
+        .set("#canvas", {
+          zIndex: -1,
+        });
     }
   }
   onAllLoaded() {

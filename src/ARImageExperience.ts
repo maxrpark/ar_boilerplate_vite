@@ -43,9 +43,9 @@ export class ARImageExperience {
     document.querySelector(".modal")!.appendChild(loaders);
   }
 
-  async setARExperience() {
+  setARExperience() {
     this.createLoaders();
-    this.mindarThree = await new MindARThree({
+    this.mindarThree = new MindARThree({
       container: document.querySelector(".ar-session-wrapper")!,
       imageTargetSrc: "/targets/target.mind",
       filterMinCF: 0.0001,
@@ -66,11 +66,11 @@ export class ARImageExperience {
     this.renderer.toneMappingExposure = 1;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  }
 
-    setTimeout(() => {
-      this.setModels();
-    }, 1000);
+  onResourcesLoaded() {
     this.setRecourses();
+    this.setModels();
   }
   setModels() {
     // Only for testing
