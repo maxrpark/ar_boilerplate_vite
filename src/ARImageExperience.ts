@@ -73,7 +73,6 @@ export class ARImageExperience {
     this.setModels();
   }
   setModels() {
-    // Only for testing
     this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(0) });
   }
 

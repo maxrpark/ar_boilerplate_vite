@@ -6,15 +6,22 @@ export default [
     name: "environmentMap",
     path: "/environments/bg_map_2.hdr",
   },
+  // {
+  //   type: "gltfLoader",
+  //   path: "/models/model.glb",
+  //   name: "model",
+  //   modelData: {},
+  // },
   {
-    type: "textureLoader",
-    name: "noiseTexture",
-    path: "/noise_rgb.png",
+    type: "gltfLoader",
+    path: "/models/glasses/scene.gltf",
+    name: "glasses",
+    modelData: {},
   },
   {
     type: "gltfLoader",
-    path: "/models/model.glb",
-    name: "model",
+    path: "/models/occluder/headOccluder.glb",
+    name: "headOccluder",
     modelData: {},
   },
 ] as SourceInt[];

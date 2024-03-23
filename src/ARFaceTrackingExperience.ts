@@ -4,6 +4,8 @@ import { Experience } from "./experience/Experience";
 import Resources from "./experience/Resources";
 import BoxObject from "./objects/BoxObject";
 import { MindARThree } from "mindar-face-three";
+import Glasses from "./objects/GlassesObject";
+import Occluder from "./objects/Occluder";
 
 export class ARFaceTrackingExperience {
   mindarThree: any;
@@ -15,6 +17,8 @@ export class ARFaceTrackingExperience {
   renderer: THREE.WebGLRenderer;
 
   box: BoxObject;
+  glasses: Glasses;
+  occluder: Occluder;
 
   constructor() {
     this.experience = new Experience();
@@ -43,15 +47,30 @@ export class ARFaceTrackingExperience {
   }
   onResourcesLoaded() {
     this.setModels();
-    this.setRecourses();
+    this.setResources();
   }
 
   setModels() {
-    // Only for testing
-    this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(6) });
+    const glassesModel = this.resources.glbModels.find(
+      (el) => el.name === "glasses"
+    )!;
+    const headOccluderModel = this.resources.glbModels.find(
+      (el) => el.name === "headOccluder"
+    )!;
+
+    this.occluder = new Occluder({
+      anchor: this.mindarThree.addAnchor(6),
+      model: headOccluderModel.model,
+    });
+
+    // this.box = new BoxObject({ anchor: this.mindarThree.addAnchor(6) });
+    this.glasses = new Glasses({
+      anchor: this.mindarThree.addAnchor(6),
+      model: glassesModel.model,
+    });
   }
 
-  setRecourses() {
+  setResources() {
     // SCENE
 
     let envMap = this.resources.items.environmentMap as THREE.Texture;
@@ -74,7 +93,7 @@ export class ARFaceTrackingExperience {
   update() {
     this.renderer.setAnimationLoop(() => {
       this.renderer.render(this.scene, this.camera);
-      this.box.onUpdate(this.experience.time.delta);
+      // this.box.onUpdate(this.experience.time.delta);
     });
   }
 }
